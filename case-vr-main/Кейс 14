@@ -1,0 +1,14 @@
+import math
+import numpy as np
+
+# Кейс 14. Полигональный бюджет.
+triangle_budget = 1_000_000
+triangles_per_object = 8_000
+objects_in_scene = 150
+max_objects = triangle_budget // triangles_per_object
+total_triangles = objects_in_scene * triangles_per_object
+print("\nКейс 14")
+print(f"Бюджет сцены: {triangle_budget:,} тр., на объект: {triangles_per_object:,} тр.")
+print("Максимум объектов в бюджете:", max_objects)
+print(f"Сцена из {objects_in_scene} объектов = {total_triangles:,} тр. -> "
+      f"{'в бюджете' if total_triangles <= triangle_budget else 'ПРЕВЫШЕН бюджет'}")

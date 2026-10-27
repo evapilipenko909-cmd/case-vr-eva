@@ -1,0 +1,14 @@
+import math
+import numpy as np
+
+# Кейс 9. Позиции левого и правого глаза.
+head = np.array([0.0, -2.0, 1.6])
+ipd = 0.065
+right_axis = np.array([1.0, 0.0, 0.0])
+left_eye = head - right_axis * ipd / 2
+right_eye = head + right_axis * ipd / 2
+distance = np.linalg.norm(right_eye - left_eye)
+print("Кейс 9")
+print("Левый глаз: ", left_eye)
+print("Правый глаз:", right_eye)
+print(f"Расстояние между камерами: {distance:.3f} м")

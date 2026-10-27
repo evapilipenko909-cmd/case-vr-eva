@@ -1,0 +1,15 @@
+import bpy
+
+# Кейс 3. Настройка стереокамеры Blender, IPD = 65 мм.
+scene = bpy.context.scene
+cam = bpy.data.objects.get("VR_Camera")
+if cam is None:
+    bpy.ops.object.camera_add(location=(0, -5, 1.6))
+    cam = bpy.context.active_object
+    cam.name = "VR_Camera"
+scene.camera = cam
+scene.render.use_multiview = True
+scene.render.views_format = "STEREO_3D"
+cam.data.stereo.interocular_distance = 0.065
+print("Стерео включено:", scene.render.use_multiview)
+print("Межзрачковое расстояние, м:", cam.data.stereo.interocular_distance)

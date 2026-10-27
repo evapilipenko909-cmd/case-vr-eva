@@ -1,0 +1,17 @@
+import math
+import numpy as np
+
+# Кейс 15. Суммарная задержка motion-to-photon.
+latencies = {
+    "Датчик (трекинг)": 2.0,
+    "Обработка": 3.0,
+    "Рендер": 11.0,
+    "Вывод на дисплей": 4.0,
+}
+threshold_ms = 20.0
+total_ms = sum(latencies.values())
+print("\nКейс 15")
+for name, value in latencies.items():
+    print(f"{name}: {value:.1f} мс")
+print(f"Суммарная задержка motion-to-photon: {total_ms:.1f} мс")
+print(f"Комфортно (< {threshold_ms:.0f} мс)? {total_ms < threshold_ms}")

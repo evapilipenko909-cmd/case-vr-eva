@@ -1,0 +1,13 @@
+import math
+import numpy as np
+
+# Кейс 10. Видимая ширина и доля объекта в кадре.
+fov_deg = 100.0
+distance_to_object = 5.0
+object_width = 2.0
+visible_width = 2 * distance_to_object * math.tan(math.radians(fov_deg / 2))
+frame_fraction = object_width / visible_width
+print("\nКейс 10")
+print(f"FOV = {fov_deg:.1f} град, расстояние = {distance_to_object:.1f} м")
+print(f"Ширина видимой области: {visible_width:.2f} м")
+print(f"Объект шириной {object_width:.1f} м занимает {frame_fraction * 100:.1f}% ширины кадра")

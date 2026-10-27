@@ -1,0 +1,11 @@
+import math
+import numpy as np
+
+# Кейс 12. Бюджет времени кадра.
+print("\nКейс 12")
+for hz in (72, 90, 120):
+    print(f"{hz} Гц -> бюджет кадра {1000 / hz:.2f} мс")
+render_ms = 9.5
+budget_90 = 1000 / 90
+print(f"Рендер {render_ms:.1f} мс при 90 Гц ({budget_90:.2f} мс): "
+      f"{'успеваем' if render_ms <= budget_90 else 'не успеваем'}")

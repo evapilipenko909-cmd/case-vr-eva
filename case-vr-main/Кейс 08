@@ -1,0 +1,12 @@
+import bpy
+import os
+
+# Кейс 8. Экспорт текущей сцены в GLB рядом с сохранённым .blend.
+if not bpy.data.filepath:
+    raise RuntimeError("Сначала сохраните проект Blender (.blend).")
+path = bpy.path.abspath("//vr_scene.glb")
+try:
+    bpy.ops.export_scene.gltf(filepath=path, export_format="GLB", export_animations=True, export_cameras=True)
+    print("Экспортировано в:", path)
+except (AttributeError, RuntimeError) as exc:
+    print("Проверьте, что glTF 2.0 Exporter установлен и включён:", exc)

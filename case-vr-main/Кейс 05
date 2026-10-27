@@ -1,0 +1,13 @@
+import bpy
+
+# Кейс 5. Создание сетки 5×5 из кубов с шагом 2 м.
+for obj in list(bpy.data.objects):
+    if obj.name.startswith("Tile_"):
+        bpy.data.objects.remove(obj, do_unlink=True)
+count = 0
+for row in range(5):
+    for col in range(5):
+        bpy.ops.mesh.primitive_cube_add(size=1, location=(col * 2 - 4, row * 2 - 4, 0))
+        bpy.context.active_object.name = f"Tile_{row}_{col}"
+        count += 1
+print("Создано объектов:", count)

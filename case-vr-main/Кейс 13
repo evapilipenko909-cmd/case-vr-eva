@@ -1,0 +1,16 @@
+import math
+import numpy as np
+
+# Кейс 13. Выбор LOD по расстоянию.
+def choose_lod(distance_m):
+    if distance_m < 5:
+        return "LOD0 (высокая детализация)"
+    if distance_m < 20:
+        return "LOD1 (средняя)"
+    if distance_m <= 50:
+        return "LOD2 (низкая)"
+    return "culled (не рендерится)"
+
+print("\nКейс 13")
+for d in (2, 10, 35, 80):
+    print(f"{d:>3} м -> {choose_lod(d)}")

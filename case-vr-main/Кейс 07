@@ -1,0 +1,19 @@
+import bpy
+import math
+
+# Кейс 7. Полный оборот VR_Cube между 1-м и 60-м кадрами.
+scene = bpy.context.scene
+obj = bpy.data.objects.get("VR_Cube")
+if obj is None:
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 1))
+    obj = bpy.context.active_object
+    obj.name = "VR_Cube"
+scene.frame_start = 1
+scene.frame_end = 60
+obj.rotation_mode = "XYZ"
+obj.rotation_euler.z = 0
+obj.keyframe_insert(data_path="rotation_euler", index=2, frame=1)
+obj.rotation_euler.z = 2 * math.pi
+obj.keyframe_insert(data_path="rotation_euler", index=2, frame=60)
+print("Анимация: кадры 1 - 60")
+print("Ключевых кадров вставлено: 2")

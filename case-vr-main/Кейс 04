@@ -1,0 +1,15 @@
+import bpy
+
+# Кейс 4. Уменьшение числа полигонов икосферы до 25%.
+bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=3, radius=1, location=(0, 0, 0))
+obj = bpy.context.active_object
+obj.name = "VR_Icosphere"
+before = sum(len(poly.vertices) - 2 for poly in obj.data.polygons)
+mod = obj.modifiers.new("Decimate_25_percent", "DECIMATE")
+mod.ratio = 0.25
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.modifier_apply(modifier=mod.name)
+after = sum(len(poly.vertices) - 2 for poly in obj.data.polygons)
+print("Было треугольников:", before)
+print("Целевое число (ratio 0.25):", round(before * 0.25))
+print("После применения Decimate:", after)

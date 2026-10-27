@@ -1,0 +1,11 @@
+import bpy
+import math
+
+# Кейс 6. Добавление направленного источника Sun.
+bpy.ops.object.light_add(type="SUN", location=(0, 0, 5))
+light = bpy.context.active_object
+light.name = "VR_Sun"
+light.data.energy = 4.0
+light.data.angle = math.radians(5)
+print("Источник света:", light.name)
+print("Тип:", light.data.type, "| Мощность:", light.data.energy)

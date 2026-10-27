@@ -1,0 +1,18 @@
+import math
+import numpy as np
+
+# Кейс 11. Поворот вектора взгляда кватернионом на 90° вокруг Z.
+theta = math.radians(90)
+q = np.array([math.cos(theta / 2), 0.0, 0.0, math.sin(theta / 2)])  # w, x, y, z
+w, x, y, z = q
+rotation = np.array([
+    [1 - 2 * (y*y + z*z), 2 * (x*y - z*w), 2 * (x*z + y*w)],
+    [2 * (x*y + z*w), 1 - 2 * (x*x + z*z), 2 * (y*z - x*w)],
+    [2 * (x*z - y*w), 2 * (y*z + x*w), 1 - 2 * (x*x + y*y)],
+])
+forward = np.array([0.0, 1.0, 0.0])
+rotated = rotation @ forward
+print("\nКейс 11")
+print("Кватернион (w,x,y,z):", np.round(q, 3))
+print("Вектор взгляда до поворота:", [0, 1, 0])
+print("После поворота на 90 по Z:", np.round(rotated, 3))

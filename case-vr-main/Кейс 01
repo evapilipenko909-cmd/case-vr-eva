@@ -1,0 +1,8 @@
+import bpy
+
+# Кейс 1. Создание куба VR_Cube на высоте 1 м.
+bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 1))
+obj = bpy.context.active_object
+obj.name = "VR_Cube"
+print("Создан объект:", obj.name)
+print("Вершин:", len(obj.data.vertices))
